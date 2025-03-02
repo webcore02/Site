@@ -1,0 +1,216 @@
+/* Основные стили */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff7e6; /* Тёплый светлый фон */
+    color: #4f4f4f; /* Тёмный текст для контраста */
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+header {
+    background-color: #f26b38; /* Тёплый осенний оранжевый */
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-family: 'Georgia', serif; /* Элегантный шрифт для заголовка */
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    font-family: 'Arial', sans-serif; /* Обычный шрифт для текста */
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Навигация */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+nav ul li {
+    margin: 0 20px;
+    transition: transform 0.3s ease;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #3a3a3a;
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+/* Навигация с эффектом при наведении */
+nav ul li:hover {
+    transform: translateY(-5px);
+}
+
+nav ul li a:hover {
+    color: #fff;
+    background-color: #f26b38; /* Оранжевый, как в header */
+}
+
+/* Секция "О себе" */
+.about-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.about-text {
+    width: 50%;
+    text-align: left;
+}
+
+.about-photo img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-photo img:hover {
+    transform: scale(1.05);
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+    color: #f26b38;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
+}
+
+
+.about-experience {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.experience-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.experience-text {
+    width: 50%;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.experience-photo img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.experience-photo img:hover {
+    transform: scale(1.05);
+}
+
+/* Описание */
+.description {
+    background-color: #ffefd5;
+    padding: 30px;
+    margin-top: 40px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Футер */
+footer {
+    background-color: #f26b38;
+    color: white;
+    padding: 15px 0;
+    margin-top: 50px;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+/* Контакты в футере */
+.contacts p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.contacts a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.contacts a:hover {
+    color: #ffd700; /* Желтоватый оттенок для акцента */
+}
+
+/* Респонсивность */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-photo img {
+        width: 80%;
+        max-width: 250px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
