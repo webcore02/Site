@@ -33,15 +33,16 @@ header p {
 
 /* Навигация */
 nav ul {
-    list-style: none;
+     list-style: none;
     padding: 0;
-    display: flex;
-    justify-content: center;
+    display: flex; /* Используем Flexbox для выравнивания */
+    justify-content: center; /* Центрируем элементы по горизонтали */
+    flex-wrap: nowrap; /* Запрещаем перенос элементов на новую строку */
     margin-top: 30px;
 }
 
 nav ul li {
-    margin: 0 20px;
+    margin: 0 10px;
     transition: transform 0.3s ease;
 }
 
