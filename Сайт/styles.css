@@ -184,3 +184,23 @@ footer {
         max-width: 300px;
     }
 }
+
+@media (max-width: 768px) {
+    .quote {
+        font-size: 1rem; /* Чуть меньше текст */
+        text-align: center; /* Выравниваем по центру */
+        margin-left: 0; /* Убираем отступ слева */
+        margin-right: 0; /* Убираем отступ справа */
+        padding: 10px; /* Добавляем немного пространства */
+    }
+
+    .quote p {
+        word-wrap: break-word; /* Позволяет тексту переноситься */
+    }
+
+    .quote .author {
+        font-size: 0.9rem; /* Чуть уменьшаем размер автора */
+        display: block; /* Отображаем на новой строке */
+        margin-top: 5px;
+    }
+}
