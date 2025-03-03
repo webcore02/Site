@@ -4,13 +4,14 @@ body {
     margin: 0;
     padding: 0;
     background-color: #fff7e6; /* Тёплый светлый фон */
-    color: #4f4f4f; /* Тёмный текст для контраста */
+    color: #4f4f4f;
     text-align: center;
     transition: background-color 0.3s ease-in-out;
 }
 
+/* Хедер */
 header {
-    background-color: #f26b38; /* Тёплый осенний оранжевый */
+    background-color: #f26b38;
     color: white;
     padding: 50px 0;
     text-align: center;
@@ -21,14 +22,14 @@ header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
     letter-spacing: 1px;
-    font-family: 'Georgia', serif; /* Элегантный шрифт для заголовка */
+    font-family: 'Georgia', serif;
 }
 
 header p {
     font-size: 1.2rem;
-    margin-top: 15px; /* Отступ сверху, чтобы текст не сливался */
-    color: #ffe4b5; /* Светло-бежевый цвет для контраста */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Легкая тень для читаемости */
+    margin-top: 15px;
+    color: #ffe4b5;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Анимация появления */
@@ -56,20 +57,18 @@ nav ul li a {
     color: #3a3a3a;
     font-weight: bold;
     font-size: 1.1rem;
-    letter-spacing: 0.5px;
     padding: 10px;
     border-radius: 5px;
     transition: color 0.3s, background-color 0.3s;
 }
 
-/* Навигация с эффектом при наведении */
 nav ul li:hover {
     transform: translateY(-5px);
 }
 
 nav ul li a:hover {
     color: #fff;
-    background-color: #f26b38; /* Оранжевый, как в header */
+    background-color: #f26b38;
 }
 
 /* Секция "О себе" */
@@ -79,6 +78,7 @@ nav ul li a:hover {
     align-items: center;
     gap: 40px;
     margin-top: 50px;
+    flex-wrap: wrap;
 }
 
 .about-text {
@@ -108,20 +108,15 @@ nav ul li a:hover {
 .about-text p {
     font-size: 1.1rem;
     line-height: 1.6;
-    font-family: 'Arial', sans-serif;
 }
 
-
-.about-experience {
-    margin-top: 80px;
-    text-align: center;
-}
-
+/* Опыт */
 .experience-content {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .experience-text {
@@ -151,27 +146,31 @@ nav ul li a:hover {
     line-height: 1.6;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
 }
 
-/* Футер */
+/* ---- ФУТЕР ---- */
 footer {
     background-color: #f26b38;
     color: white;
-    padding: 15px 0;
+    padding: 20px;
     margin-top: 50px;
     font-size: 1rem;
-    letter-spacing: 0.5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
 }
 
-/* Контакты в футере */
+/* Контакты (НОРМАЛЬНОЕ ВЫРАВНИВАНИЕ) */
+.contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Контакты в строку, если хватает места */
 .contacts p {
-    margin: 0;
+    margin: 5px 0;
     font-size: 1rem;
+    white-space: nowrap; /* Запрещаем перенос */
 }
 
 .contacts a {
@@ -182,5 +181,32 @@ footer {
 }
 
 .contacts a:hover {
-    color: #ffd700; /* Желтоватый оттенок для акцента */
+    color: #ffd700;
+}
+
+/* ---- РЕСПОНСИВНОСТЬ ---- */
+@media (max-width: 768px) {
+    /* Секции "О себе" и "Опыт" */
+    .about-content, .experience-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-text, .experience-text {
+        width: 90%;
+        text-align: center;
+    }
+
+    .about-photo img, .experience-photo img {
+        width: 90%;
+        max-width: 250px;
+    }
+
+    /* Футер: контакты в колонку */
+    .contacts {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
 }
