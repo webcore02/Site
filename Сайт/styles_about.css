@@ -158,20 +158,24 @@ nav ul li a:hover {
 footer {
     background-color: #f26b38;
     color: white;
-    padding: 15px 0;
+    padding: 15px 20px;
     margin-top: 50px;
     font-size: 1rem;
-    letter-spacing: 0.5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
+    text-align: center;
 }
 
-/* Контакты в футере */
+.contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Отступ между контактами */
+    flex-wrap: wrap; /* Чтобы не уезжало на мобилках */
+}
+
 .contacts p {
-    margin: 0;
+    margin: 5px 0;
     font-size: 1rem;
+    white-space: nowrap; /* Запрещаем перенос строк */
 }
 
 .contacts a {
@@ -182,41 +186,13 @@ footer {
 }
 
 .contacts a:hover {
-    color: #ffd700; /* Желтоватый оттенок для акцента */
+    color: #ffd700;
 }
 
-/* Респонсивность */
+/* Адаптация под мобильные устройства */
 @media (max-width: 768px) {
-    @media (max-width: 768px) {
-        .about-content {
-            flex-direction: column;
-            align-items: center;
-            text-align: center; /* Центрирование текста */
-        }
-    
-        .about-text {
-            width: 90%; /* Увеличиваем ширину текста для удобства чтения */
-            text-align: center; /* Центрируем текст */
-        }
-    
-        .about-photo img {
-            width: 90%;
-            max-width: 250px;
-        }
-    
-        .experience-content {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-    
-        .experience-text {
-            width: 90%;
-        }
-    
-        .experience-photo img {
-            width: 90%;
-            max-width: 250px;
-        }
+    .contacts {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px; /* Меньше отступ */
     }
-}
