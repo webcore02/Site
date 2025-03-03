@@ -106,9 +106,15 @@ nav ul li a:hover {
 }
 
 .service-card .price {
-    font-size: 1.2rem;
-    color: #f26b38;
+    font-size: 1rem; /* Уменьшенный размер шрифта */
+    color: #666; /* Более мягкий цвет */
     margin-top: 10px;
+}
+
+.service-card .price::before {
+    content: "От "; /* Добавление текста "От" перед ценой */
+    font-size: 1rem; /* Размер шрифта для текста "От" */
+    color: #333; /* Цвет для текста "От" */
 }
 
 .service-card .btn {
