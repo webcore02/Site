@@ -26,9 +26,8 @@ header h1 {
 
 header p {
     font-size: 1.2rem;
-    margin-top: 15px; /* Отступ сверху, чтобы текст не сливался */
-    color: #ffe4b5; /* Светло-бежевый цвет для контраста */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Легкая тень для читаемости */
+    margin-top: 10px;
+    font-family: 'Arial', sans-serif; /* Обычный шрифт для текста */
 }
 
 /* Анимация появления */
@@ -158,25 +157,20 @@ nav ul li a:hover {
 footer {
     background-color: #f26b38;
     color: white;
-    padding: 15px 20px;
+    padding: 15px 0;
     margin-top: 50px;
     font-size: 1rem;
-    text-align: center;
+    letter-spacing: 0.5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    padding: 15px 30px;
 }
 
-.contacts {
-    display: flex;
-    gap: 15px; /* Отступ между элементами */
-}
-
+/* Контакты в футере */
 .contacts p {
     margin: 0;
     font-size: 1rem;
-    white-space: nowrap; /* Запрещаем перенос строк */
 }
 
 .contacts a {
@@ -187,24 +181,41 @@ footer {
 }
 
 .contacts a:hover {
-    color: #ffd700; /* Желтоватый оттенок */
+    color: #ffd700; /* Желтоватый оттенок для акцента */
 }
 
-/* Адаптация под мобильные устройства */
+/* Респонсивность */
 @media (max-width: 768px) {
-    footer {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .contacts {
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-}
-
-    footer {
-        padding: 20px;
+    @media (max-width: 768px) {
+        .about-content {
+            flex-direction: column;
+            align-items: center;
+            text-align: center; /* Центрирование текста */
+        }
+    
+        .about-text {
+            width: 90%; /* Увеличиваем ширину текста для удобства чтения */
+            text-align: center; /* Центрируем текст */
+        }
+    
+        .about-photo img {
+            width: 90%;
+            max-width: 250px;
+        }
+    
+        .experience-content {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    
+        .experience-text {
+            width: 90%;
+        }
+    
+        .experience-photo img {
+            width: 90%;
+            max-width: 250px;
+        }
     }
 }
