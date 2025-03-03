@@ -9,6 +9,9 @@ body {
     transition: background-color 0.3s ease-in-out;
 }
 
+/* Подключение красивого шрифта */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
+
 /* Хедер */
 header {
     background-color: #f26b38;
@@ -30,12 +33,6 @@ header p {
     margin-top: 15px;
     color: #ffe4b5;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Анимация появления */
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
 }
 
 /* Навигация */
@@ -71,22 +68,31 @@ nav ul li a:hover {
     background-color: #f26b38;
 }
 
-/* Секция "О себе" */
-.about-content {
+/* Секция "О себе" и "Опыт" */
+.about-content, .experience-content {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 40px;
-    margin-top: 50px;
     flex-wrap: wrap;
+    margin-top: 50px;
 }
 
-.about-text {
+/* Текст в красивом шрифте + рамка */
+.about-text, .experience-text {
     width: 50%;
-    text-align: left;
+    text-align: justify;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-family: 'Playfair Display', serif; /* Новый элегантный шрифт */
+    background-color: rgba(255, 239, 213, 0.5); /* Лёгкий фон */
+    padding: 20px;
+    border-left: 5px solid #f26b38; /* Стильная левая рамка */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.about-photo img {
+.about-photo img, .experience-photo img {
     width: 100%;
     max-width: 300px;
     border-radius: 10px;
@@ -94,61 +100,18 @@ nav ul li a:hover {
     transition: transform 0.3s ease-in-out;
 }
 
-.about-photo img:hover {
+.about-photo img:hover, .experience-photo img:hover {
     transform: scale(1.05);
 }
 
-.about-text h2 {
+.about-text h2, .experience-text h2 {
     font-size: 2rem;
     margin-bottom: 20px;
     font-family: 'Georgia', serif;
     color: #f26b38;
 }
 
-.about-text p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-/* Опыт */
-.experience-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.experience-text {
-    width: 50%;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.experience-photo img {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.experience-photo img:hover {
-    transform: scale(1.05);
-}
-
-/* Описание */
-.description {
-    background-color: #ffefd5;
-    padding: 30px;
-    margin-top: 40px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* ---- ФУТЕР ---- */
+/* Футер */
 footer {
     background-color: #f26b38;
     color: white;
@@ -157,7 +120,7 @@ footer {
     font-size: 1rem;
 }
 
-/* Контакты (НОРМАЛЬНОЕ ВЫРАВНИВАНИЕ) */
+/* Контакты */
 .contacts {
     display: flex;
     justify-content: center;
@@ -166,11 +129,10 @@ footer {
     gap: 15px;
 }
 
-/* Контакты в строку, если хватает места */
 .contacts p {
     margin: 5px 0;
     font-size: 1rem;
-    white-space: nowrap; /* Запрещаем перенос */
+    white-space: nowrap;
 }
 
 .contacts a {
@@ -184,9 +146,8 @@ footer {
     color: #ffd700;
 }
 
-/* ---- РЕСПОНСИВНОСТЬ ---- */
+/* РЕСПОНСИВНОСТЬ */
 @media (max-width: 768px) {
-    /* Секции "О себе" и "Опыт" */
     .about-content, .experience-content {
         flex-direction: column;
         align-items: center;
@@ -195,7 +156,8 @@ footer {
 
     .about-text, .experience-text {
         width: 90%;
-        text-align: center;
+        text-align: left;
+        padding: 15px;
     }
 
     .about-photo img, .experience-photo img {
@@ -203,7 +165,6 @@ footer {
         max-width: 250px;
     }
 
-    /* Футер: контакты в колонку */
     .contacts {
         flex-direction: column;
         text-align: center;
