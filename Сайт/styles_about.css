@@ -161,18 +161,20 @@ footer {
     padding: 15px 20px;
     margin-top: 50px;
     font-size: 1rem;
-    text-align: center; /* Центрируем содержимое */
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .contacts {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px; /* Отступ между строками */
+    gap: 15px; /* Отступ между элементами */
 }
 
 .contacts p {
-    margin: 5px 0;
+    margin: 0;
     font-size: 1rem;
     white-space: nowrap; /* Запрещаем перенос строк */
 }
@@ -182,25 +184,25 @@ footer {
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
-    display: inline-block;
 }
 
 .contacts a:hover {
-    color: #ffd700; /* Желтоватый оттенок для акцента */
+    color: #ffd700; /* Желтоватый оттенок */
 }
 
-/* Респонсивность */
+/* Адаптация под мобильные устройства */
 @media (max-width: 768px) {
-    .contacts {
+    footer {
         flex-direction: column;
         text-align: center;
-        gap: 8px;
     }
 
-    .contacts p {
-        font-size: 1rem;
-        text-align: center;
+    .contacts {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
     }
+}
 
     footer {
         padding: 20px;
