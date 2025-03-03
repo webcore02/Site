@@ -111,6 +111,21 @@ nav ul li a:hover {
     margin-top: 10px;
 }
 
+/* Текст "Решение олимпиадных задач"*/
+.olympiad-solution {
+    font-size: 1rem; /* Увеличенный размер шрифта для акцента */
+    font-weight: bold; /* Жирный шрифт для выделения */
+    color: #f26b38; /* Яркий цвет текста */
+    text-align: center; /* Центрирование текста */
+    text-transform: uppercase; /* Преобразование текста в верхний регистр */
+    letter-spacing: 2px; /* Увеличение расстояния между буквами */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Легкая тень для глубины */
+    margin: 20px 0; /* Отступы сверху и снизу */
+    padding: 10px; /* Внутренние отступы */
+    background-color: #fff7e6; /* Тёплый фон для контраста */
+    border-radius: 8px; /* Закругленные углы */
+}
+
 .service-card .price::before {
     content: "От "; /* Добавление текста "От" перед ценой */
     font-size: 1rem; /* Размер шрифта для текста "От" */
