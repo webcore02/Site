@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://mysiterepetitor.vercel.app/sitemap.xml 
