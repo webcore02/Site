@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учитель начальных классов | Услуги</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;1,6..12,400&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #88c0d0; /* нежно-голубой */
+            --secondary-color: #8fbcbb; /* мятный */
+            --accent-color: #d08770; /* теплый бежевый */
+            --text-color: #2e3440;
+            --light-bg: #f8f8f8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            color: var(--text-color);
+            background-color: white;
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            font-size: 1.05rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        /* Анимированный фон */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(136, 192, 208, 0.1);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Навигация */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Мобильное меню */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            padding: 1rem;
+        }
+
+        .hamburger {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            transition: all 0.3s;
+        }
+
+        .hamburger::before {
+            transform: translateY(-8px);
+        }
+
+        .hamburger::after {
+            transform: translateY(8px);
+        }
+
+        /* Основное содержимое */
+        main {
+            max-width: 1200px;
+            margin: 6rem auto 3rem;
+            padding: 0 2rem;
+            opacity: 0;
+            animation: fadeInMain 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInMain {
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            line-height: 1.3;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 1rem auto 0;
+            border-radius: 3px;
+        }
+
+        /* Стили для услуг */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: cardAppear 0.6s ease-out forwards;
+        }
+
+        @keyframes cardAppear {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .service-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .service-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .service-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .service-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 1rem 0;
+            background: linear-gradient(135deg, rgba(208, 135, 112, 0.1), rgba(208, 135, 112, 0.05));
+            padding: 0.5rem;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .service-features {
+            margin: 1rem 0;
+            flex-grow: 1;
+        }
+
+        .service-features li {
+            margin-bottom: 0.7rem;
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+
+        .service-features li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 100%;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(136, 192, 208, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(136, 192, 208, 0.5);
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        .special-offer {
+            background: linear-gradient(135deg, rgba(208, 135, 112, 0.15), rgba(208, 135, 112, 0.05));
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-align: center;
+            border: 1px dashed var(--accent-color);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+        }
+
+        .special-offer::before {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .special-offer::after {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            margin: 0 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                transition: left 0.3s;
+                z-index: 99;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 2rem;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu-toggle.active .hamburger {
+                background-color: transparent;
+            }
+
+            .menu-toggle.active .hamburger::before {
+                transform: rotate(45deg);
+            }
+
+            .menu-toggle.active .hamburger::after {
+                transform: rotate(-45deg);
+            }
+
+            main {
+                margin-top: 4rem;
+            }
+
+            body {
+                font-size: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .service-card {
+                padding: 0;
+            }
+
+            .service-content {
+                padding: 1.5rem;
+            }
+
+            .service-title {
+                font-size: 1.6rem;
+            }
+
+            .service-image {
+                height: 160px;
+            }
+
+            .btn {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="bg-animation" id="bgAnimation"></div>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">Ольга Николаевна</a>
+            <div class="menu-toggle" id="menuToggle">
+                <div class="hamburger"></div>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="services.html" class="active">Услуги</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main>
+        <h1>Мои услуги</h1>
+        
+        <div class="services-container">
+            <!-- Индивидуальные занятия -->
+            <div class="service-card">
+                <img src="images/ind_zan.webp" alt="Индивидуальные занятия" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">Индивидуальные занятия</h3>
+                    <div class="service-price">3000 ₽ / 1 час</div>
+                    <ul class="service-features">
+                        <li>Персональный подход к каждому ученику</li>
+                        <li>Разбор сложных тем</li>
+                        <li>Подготовка к контрольным работам</li>
+                        <li>Гибкий график занятий</li>
+                    </ul>
+                    <a href="https://forms.yandex.ru/u/67c46e3390fa7bde6d0aedb5/" class="btn" target="_blank">Записаться на занятие</a>
+                </div>
+            </div>
+            
+            <!-- Групповые занятия -->
+            <div class="service-card">
+                <img src="images/gryp_zan.webp" alt="Групповые занятия" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">Групповые занятия</h3>
+                    <div class="service-price">1500 ₽ / 1 час</div>
+                    <ul class="service-features">
+                        <li>Совместное решение задач</li>
+                        <li>Развитие коммуникативных навыков</li>
+                        <li>Экономия средств при том же качестве</li>
+                    </ul>
+                    <a href="https://forms.yandex.ru/u/67c46e3390fa7bde6d0aedb5/" class="btn" target="_blank">Записаться на занятие</a>
+                </div>
+            </div>
+            
+            <!-- Математический клуб -->
+            <div class="service-card">
+                <img src="images/mat_club.jpg" alt="Математический клуб" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">Математический клуб</h3>
+                    <div class="service-price">3000 ₽ / 1 месяц</div>
+                    <div class="service-features">
+                        <p>Решение олимпиадных задач повышенной сложности</p>
+                        <div class="special-offer">Для моих учеников — бесплатно!</div>
+                        <ul>
+                            <li>Развитие логического мышления</li>
+                            <li>Подготовка к олимпиадам</li>
+                            <li>Нестандартные подходы к решению задач</li>
+                        </ul>
+                    </div>
+                    <a href="https://forms.yandex.ru/u/67c46e3390fa7bde6d0aedb5/" class="btn" target="_blank">Записаться на занятие</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Главная</a>
+            <a href="services.html">Услуги</a>
+            <a href="contacts.html">Контакты</a>
+        </div>
+        <p>© 2025 Ольга Николаевна. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Анимированный фон с кругами
+        document.addEventListener('DOMContentLoaded', function() {
+            const bgAnimation = document.getElementById('bgAnimation');
+            const colors = ['rgba(136, 192, 208, 0.1)', 'rgba(143, 188, 187, 0.1)', 'rgba(208, 135, 112, 0.1)'];
+            
+            for (let i = 0; i < 15; i++) {
+                const circle = document.createElement('div');
+                circle.classList.add('circle');
+                
+                // Случайные параметры
+                const size = Math.random() * 200 + 50;
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 20 + 10;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+                circle.style.left = `${posX}px`;
+                circle.style.top = `${posY}px`;
+                circle.style.animationDelay = `${delay}s`;
+                circle.style.animationDuration = `${duration}s`;
+                circle.style.background = color;
+                
+                bgAnimation.appendChild(circle);
+            }
+            
+            // Мобильное меню
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

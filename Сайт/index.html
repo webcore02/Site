@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Учитель начальных классов | Главная</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;1,6..12,400&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #88c0d0; /* нежно-голубой */
+            --secondary-color: #8fbcbb; /* мятный */
+            --accent-color: #d08770; /* теплый бежевый */
+            --text-color: #2e3440;
+            --light-bg: #f8f8f8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            color: var(--text-color);
+            background-color: white;
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            font-size: 1.05rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        /* Анимированный фон */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(136, 192, 208, 0.1);
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Навигация */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Мобильное меню */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            padding: 1rem;
+        }
+
+        .hamburger {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            transition: all 0.3s;
+        }
+
+        .hamburger::before {
+            transform: translateY(-8px);
+        }
+
+        .hamburger::after {
+            transform: translateY(8px);
+        }
+
+        /* Основное содержимое */
+        main {
+            max-width: 1200px;
+            margin: 6rem auto 3rem;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--secondary-color);
+            line-height: 1.3;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .highlight {
+            background-color: rgba(136, 192, 208, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            margin: 0 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                transition: left 0.3s;
+                z-index: 99;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 2rem;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu-toggle.active .hamburger {
+                background-color: transparent;
+            }
+
+            .menu-toggle.active .hamburger::before {
+                transform: rotate(45deg);
+            }
+
+            .menu-toggle.active .hamburger::after {
+                transform: rotate(-45deg);
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+
+            main {
+                margin-top: 4rem;
+            }
+
+            body {
+                font-size: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="bg-animation" id="bgAnimation"></div>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">Ольга Николаевна</a>
+            <div class="menu-toggle" id="menuToggle">
+                <div class="hamburger"></div>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html" class="active">Главная</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main>
+        <section class="hero">
+            <div class="hero-text fade-in">
+                <h1>Добро пожаловать на мой сайт!</h1>
+                <p class="delay-1">Меня зовут <span class="highlight">Ольга Николаевна</span>, я - учитель начальных классов с <span class="highlight">22-летним опытом</span> работы с детьми.</p>
+                <p class="delay-2">Я помогаю ученикам не только освоить трудные темы, но и развить интерес к предмету.</p>
+                <p class="delay-3">Моя цель — раскрыть потенциал каждого ученика и помочь ему достичь своих целей.</p>
+            </div>
+            <div class="hero-image fade-in delay-2">
+                <img src="images/teacher.jpeg" alt="Учитель начальных классов">
+            </div>
+        </section>
+
+        <section class="fade-in delay-3">
+            <h2>Почему я люблю свою работу</h2>
+            <p>Работа с детьми - это постоянное развитие, радость открытий и возможность видеть, как маленькие личности растут и становятся самостоятельными. Моя миссия — сделать обучение увлекательным и эффективным.</p>
+            <p>Я создаю индивидуальную программу для каждого ученика, помогая не только усвоить материал, но и развить любовь к знаниям. Вместе мы превращаем сложное в простое, а скучное — в интересное.</p>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Главная</a>
+            <a href="services.html">Услуги</a>
+            <a href="contacts.html">Контакты</a>
+        </div>
+        <p>© 2025 Ольга Николаевна. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Анимированный фон с кругами
+        document.addEventListener('DOMContentLoaded', function() {
+            const bgAnimation = document.getElementById('bgAnimation');
+            const colors = ['rgba(136, 192, 208, 0.1)', 'rgba(143, 188, 187, 0.1)', 'rgba(208, 135, 112, 0.1)'];
+            
+            for (let i = 0; i < 15; i++) {
+                const circle = document.createElement('div');
+                circle.classList.add('circle');
+                
+                // Случайные параметры
+                const size = Math.random() * 200 + 50;
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 20 + 10;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+                circle.style.left = `${posX}px`;
+                circle.style.top = `${posY}px`;
+                circle.style.animationDelay = `${delay}s`;
+                circle.style.animationDuration = `${duration}s`;
+                circle.style.background = color;
+                
+                bgAnimation.appendChild(circle);
+            }
+            
+            // Мобильное меню
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+            
+            // Плавная прокрутка
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
