@@ -254,7 +254,19 @@
 
         /* Адаптивность */
         @media (max-width: 768px) {
-            
+
+            .hero-image {
+            margin: 0 auto; /* Центрируем блок */
+            text-align: center; /* Центрируем изображение внутри блока */
+            float: none; /* Убираем обтекание, если было */
+          }
+
+
+            .hero-image img {
+    float: none; /* Убираем float у самого изображения */
+    max-width: 90%; /* Можно 100%, если нужно на всю ширину */
+  }
+
             .header-container {
                 padding: 1rem;
             }
